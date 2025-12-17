@@ -32,5 +32,3 @@ USER laravel
 COPY --chown=laravel:laravel . .
 
 RUN composer install
-
-CMD ["php-fpm"]
