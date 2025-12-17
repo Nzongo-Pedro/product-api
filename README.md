@@ -55,7 +55,7 @@ Antes de começar, tenha instalado:
 
 ### 1️⃣ Clonar o repositório
 
-    git clone <URL_DO_REPOSITORIO>
+    git clone https://github.com/Nzongo-Pedro/product-api
     cd product-api
 
 ### 2️⃣ Configurar ambiente
@@ -138,9 +138,9 @@ Para remover volumes:
 
 ## 📚 Objetivo
 
-Projeto educacional e profissional para: - Demonstrar DDD em Laravel -
+Demonstrar DDD em Laravel -
 Servir como base de API real - Preparação para testes técnicos
-pleno/sênior
+
 
 ------------------------------------------------------------------------
 
