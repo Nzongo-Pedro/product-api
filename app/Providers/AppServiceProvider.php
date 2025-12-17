@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->app->bind(
+            \App\Domain\Product\Repositories\ProductRepository::class,
+            \App\Infrastructure\Persistence\Eloquent\EloquentProductRepository::class
+        );
+
     }
 }

@@ -1,0 +1,36 @@
+# ---------- Base ----------
+FROM php:8.3-fpm-alpine AS base
+
+# Dependências do sistema
+RUN apk add --no-cache \
+    bash \
+    git \
+    unzip \
+    libpq-dev \
+    oniguruma-dev \
+    icu-dev
+
+# Extensões PHP
+RUN docker-php-ext-install \
+    pdo \
+    pdo_pgsql \
+    mbstring \
+    intl
+
+# Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www
+
+# ---------- Dev ----------
+FROM base AS dev
+
+# Usuário não-root
+RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
+USER laravel
+
+COPY --chown=laravel:laravel . .
+
+RUN composer install
+
+CMD ["php-fpm"]
